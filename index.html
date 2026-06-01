@@ -15,75 +15,169 @@
 
 body{
     min-height:100vh;
+    background:linear-gradient(135deg,#ff758c,#ff7eb3,#ffc3d4);
+    overflow:hidden;
     display:flex;
     justify-content:center;
     align-items:center;
-    overflow:hidden;
-    background:linear-gradient(
-        135deg,
-        #ff758c,
-        #ff7eb3,
-        #ffc3d4
-    );
+    padding:20px;
 }
 
 /* Floating Hearts */
 .hearts{
     position:fixed;
-    width:100%;
-    height:100%;
+    inset:0;
     overflow:hidden;
-    top:0;
-    left:0;
-    z-index:0;
+    pointer-events:none;
 }
 
-.heart{
+.hearts span{
     position:absolute;
-    color:rgba(255,255,255,0.7);
-    font-size:20px;
-    animation:float 10s linear infinite;
+    bottom:-100px;
+    font-size:24px;
+    animation:float 12s linear infinite;
+    opacity:.7;
 }
 
 @keyframes float{
-    0%{
-        transform:translateY(100vh) rotate(0deg);
+    from{
+        transform:translateY(0) rotate(0deg);
         opacity:0;
     }
     20%{
         opacity:1;
     }
-    100%{
+    to{
         transform:translateY(-120vh) rotate(360deg);
         opacity:0;
     }
 }
 
-/* Card */
-.card{
+/* Sparkles */
+.sparkle{
+    position:absolute;
+    color:white;
+    animation:twinkle 2s infinite ease-in-out;
+    pointer-events:none;
+}
+
+@keyframes twinkle{
+    0%,100%{
+        opacity:.2;
+        transform:scale(.7);
+    }
+    50%{
+        opacity:1;
+        transform:scale(1.2);
+    }
+}
+
+/* Envelope */
+.container{
     position:relative;
-    z-index:2;
-    width:90%;
+    z-index:10;
+    width:100%;
+    max-width:800px;
+}
+
+.envelope{
+    width:320px;
+    height:220px;
+    margin:auto;
+    position:relative;
+    cursor:pointer;
+    transition:.8s;
+}
+
+.envelope.hide{
+    opacity:0;
+    transform:scale(.7);
+    pointer-events:none;
+}
+
+.back{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:#ff5f8a;
+    border-radius:10px;
+}
+
+.flap{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:#ff7ba0;
+    clip-path:polygon(0 0,100% 0,50% 55%);
+    transform-origin:top;
+    transition:1s;
+    border-radius:10px;
+}
+
+.envelope.open .flap{
+    transform:rotateX(180deg);
+}
+
+.envelope-text{
+    position:absolute;
+    width:100%;
+    text-align:center;
+    top:55%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    color:white;
+    font-size:1.2rem;
+    font-weight:bold;
+}
+
+/* Letter Card */
+.card{
+    display:none;
+    position:relative;
     max-width:750px;
+    margin:auto;
     padding:40px;
     border-radius:25px;
     background:rgba(255,255,255,0.15);
     backdrop-filter:blur(20px);
     -webkit-backdrop-filter:blur(20px);
-    border:1px solid rgba(255,255,255,0.3);
-    box-shadow:0 8px 40px rgba(0,0,0,0.15);
-    text-align:center;
+    border:1px solid rgba(255,255,255,0.25);
     color:white;
-    transition:0.4s;
+    text-align:center;
+    box-shadow:
+        0 0 25px rgba(255,255,255,.4),
+        0 0 60px rgba(255,105,180,.4);
+    animation:fadeIn 1.2s ease;
 }
 
-.card:hover{
-    transform:translateY(-5px);
+.card.show{
+    display:block;
 }
 
-.title{
-    font-size:2.2rem;
-    margin-bottom:15px;
+.card::before{
+    content:"";
+    position:absolute;
+    inset:-3px;
+    border-radius:28px;
+    background:linear-gradient(
+        45deg,
+        rgba(255,255,255,.3),
+        rgba(255,182,193,.5),
+        rgba(255,255,255,.3)
+    );
+    z-index:-1;
+    filter:blur(12px);
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
 .big-heart{
@@ -92,12 +186,14 @@ body{
 }
 
 @keyframes pulse{
-    0%,100%{
-        transform:scale(1);
-    }
     50%{
         transform:scale(1.15);
     }
+}
+
+h1{
+    margin-top:10px;
+    margin-bottom:15px;
 }
 
 .line{
@@ -109,56 +205,107 @@ body{
 }
 
 .message{
-    font-size:1.1rem;
     line-height:1.9;
-    margin-top:15px;
+    font-size:1.08rem;
 }
 
 .signature{
-    margin-top:30px;
-    font-size:1.2rem;
+    margin-top:25px;
     font-weight:bold;
+    font-size:1.15rem;
 }
 
 @media(max-width:600px){
-    .card{
-        padding:30px 20px;
+
+    .envelope{
+        width:260px;
+        height:180px;
     }
 
-    .title{
+    .card{
+        padding:28px 20px;
+    }
+
+    h1{
         font-size:1.7rem;
     }
 
     .message{
         font-size:1rem;
     }
+
+    .big-heart{
+        font-size:50px;
+    }
 }
 </style>
 </head>
 <body>
 
+<!-- Floating Hearts -->
 <div class="hearts">
-    <span class="heart" style="left:5%; animation-delay:0s;">❤️</span>
-    <span class="heart" style="left:15%; animation-delay:2s;">💕</span>
-    <span class="heart" style="left:25%; animation-delay:4s;">❤️</span>
-    <span class="heart" style="left:35%; animation-delay:1s;">💖</span>
-    <span class="heart" style="left:45%; animation-delay:6s;">❤️</span>
-    <span class="heart" style="left:55%; animation-delay:3s;">💕</span>
-    <span class="heart" style="left:65%; animation-delay:7s;">💖</span>
-    <span class="heart" style="left:75%; animation-delay:5s;">❤️</span>
-    <span class="heart" style="left:85%; animation-delay:2s;">💕</span>
-    <span class="heart" style="left:95%; animation-delay:8s;">💖</span>
+    <span style="left:5%;animation-delay:0s;">❤️</span>
+    <span style="left:15%;animation-delay:2s;">💕</span>
+    <span style="left:30%;animation-delay:4s;">💖</span>
+    <span style="left:45%;animation-delay:1s;">❤️</span>
+    <span style="left:60%;animation-delay:5s;">💕</span>
+    <span style="left:75%;animation-delay:3s;">💖</span>
+    <span style="left:90%;animation-delay:6s;">❤️</span>
 </div>
 
-<div class="card">
+<!-- Sparkles -->
+<div class="sparkle" style="top:10%;left:10%;">✨</div>
+<div class="sparkle" style="top:20%;right:15%;">✨</div>
+<div class="sparkle" style="bottom:20%;left:15%;">✨</div>
+<div class="sparkle" style="bottom:15%;right:10%;">✨</div>
 
-    <div class="big-heart">❤️</div>
+<div class="container">
 
-    <h1 class="title">Happy 8th Month Anniversary</h1>
+    <div class="envelope" id="envelope">
+        <div class="back"></div>
+        <div class="flap"></div>
+        <div class="envelope-text">
+            💌 Tap to Open
+        </div>
+    </div>
 
-    <div class="line"></div>
+    <div class="card" id="card">
 
-    <p class="message">
-        My Love,<br><br>
+        <div class="big-heart">❤️</div>
 
-        It's hard to believe that eight wonderful months have already passed since we started this beautiful journey together. Every day with you brings new
+        <h1>Happy 8th Month Anniversary</h1>
+
+        <div class="line"></div>
+
+        <p class="message">
+            My Love,<br><br>
+
+            Eight months ago, you entered my life and turned ordinary days into something truly special. Every conversation, every laugh, and every moment we share has become a memory that I treasure deeply. You bring comfort to my heart, happiness to my days, and a warmth that makes everything feel brighter. Thank you for being my best friend, my safe place, and the person who makes me smile even when you're not around. As we celebrate our 8th month together, I want you to know that my love and appreciation for you continue to grow every single day. No matter what the future holds, I will always cherish what we have and look forward to making countless more beautiful memories with you. ❤️
+        </p>
+
+        <div class="signature">
+            Forever Yours ❤️<br>
+            Your Name
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+const envelope = document.getElementById("envelope");
+const card = document.getElementById("card");
+
+envelope.addEventListener("click", () => {
+    envelope.classList.add("open");
+
+    setTimeout(() => {
+        envelope.classList.add("hide");
+        card.classList.add("show");
+    }, 900);
+});
+</script>
+
+</body>
+</html>
+   
