@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy 8th Month Anniversary ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
 *{
@@ -86,7 +87,11 @@ body{
     z-index:10;
     width:100%;
     max-width:800px;
-    margin:40px auto;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
 }
 
 /* Envelope */
@@ -131,13 +136,16 @@ body{
 
 .envelope-text{
     position:absolute;
-    top:55%;
+    top:58%;
     left:50%;
     transform:translate(-50%,-50%);
     color:white;
     text-align:center;
-    font-size:1.2rem;
-    font-weight:600;
+    font-family:'Great Vibes', cursive;
+    font-size:2.2rem;
+    line-height:1.1;
+    text-shadow:0 0 10px rgba(255,255,255,0.7);
+    width:100%;
 }
 
 /* Letter Card */
@@ -257,6 +265,22 @@ h1{
         font-size:52px;
     }
 }
+.top-title{
+    color:white;
+    font-size:2rem;
+    font-weight:600;
+    text-align:center;
+    margin-bottom:40px;
+    text-shadow:0 0 15px rgba(255,255,255,0.7);
+}
+
+.for-name{
+    display:block;
+    font-family:'Great Vibes', cursive;
+    font-size:3rem;
+    margin-top:10px;
+    color:white;
+}
 </style>
 </head>
 
@@ -283,14 +307,20 @@ h1{
 
 <div class="container">
 
+    <div class="top-title">
+        A Special Letter
+        <span class="for-name">For Kruthika ❤️</span>
+    </div>
+
     <!-- Envelope -->
     <div class="envelope" id="envelope">
         <div class="back"></div>
         <div class="flap"></div>
 
         <div class="envelope-text">
-            💌 Tap To Open
-        </div>
+    💌<br>
+    Tap To Open
+</div>
     </div>
 
     <!-- Letter -->
