@@ -87,11 +87,7 @@ body{
     z-index:10;
     width:100%;
     max-width:800px;
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
+    margin:0 auto;
 }
 
 /* Envelope */
@@ -370,8 +366,10 @@ h1{
 </div>
 
 <script>
+
 const envelope = document.getElementById("envelope");
 const card = document.getElementById("card");
+const intro = document.getElementById("intro");
 
 envelope.addEventListener("click", () => {
 
@@ -379,15 +377,14 @@ envelope.addEventListener("click", () => {
 
     setTimeout(() => {
 
-        envelope.classList.add("hide");
+        intro.style.display = "none";
+
         card.classList.add("show");
 
-        setTimeout(() => {
-            card.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
-        }, 250);
+        card.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
 
     }, 900);
 
