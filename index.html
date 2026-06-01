@@ -260,6 +260,33 @@ h1{
         font-size:52px;
     }
 }
+/* 💌 Romantic breathing envelope */
+.envelope {
+    animation: breathe 3.5s ease-in-out infinite;
+    transform-origin: center;
+}
+
+/* soft hover lift */
+.envelope:hover {
+    transform: translateY(-8px) scale(1.02);
+    transition: 0.4s ease;
+}
+
+/* breathing effect */
+@keyframes breathe {
+    0% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
+    }
+    50% {
+        transform: scale(1.02);
+        filter: drop-shadow(0 0 20px rgba(255,105,180,0.4));
+    }
+    100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
+    }
+}
 .top-title{
     color:white;
     font-size:2rem;
