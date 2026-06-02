@@ -60,6 +60,25 @@ body{
         opacity:0;
     }
 }
+/* 💖 Click Hearts */
+.heart-pop{
+    position:fixed;
+    font-size:20px;
+    pointer-events:none;
+    animation:pop 1s ease-out forwards;
+    z-index:9999;
+}
+
+@keyframes pop{
+    0%{
+        transform:translate(0,0) scale(1);
+        opacity:1;
+    }
+    100%{
+        transform:translate(0,-120px) scale(1.8);
+        opacity:0;
+    }
+}
 
 /* Sparkles */
 .sparkle{
@@ -355,6 +374,8 @@ h1{
 </head>
 
 <body>
+
+<div id="heart-container"></div>
 
 <!-- Floating Hearts -->
 <div class="hearts">
