@@ -524,6 +524,8 @@ const envelope = document.getElementById("envelope");
 const card = document.getElementById("card");
 const intro = document.getElementById("intro");
 
+const music = document.getElementById("bgMusic");
+
 envelope.addEventListener("click", () => {
 
     envelope.classList.add("open");
@@ -531,8 +533,12 @@ envelope.addEventListener("click", () => {
     setTimeout(() => {
 
         intro.style.display = "none";
-
         card.classList.add("show");
+
+        // 💖 MUSIC STARTS HERE (exact moment card appears)
+        music.play().catch(() => {
+            console.log("Autoplay blocked");
+        });
 
         card.scrollIntoView({
             behavior: "smooth",
@@ -566,6 +572,10 @@ document.addEventListener("click", function(e){
 
 });
 </script>
+
+<audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mp3">
+</audio>
 
 </body>
 </html>
