@@ -166,33 +166,31 @@ body{
 .slider{
     width:100%;
     max-width:500px;
+    height:300px;
     margin:25px auto;
+    position:relative;
     overflow:hidden;
     border-radius:18px;
     box-shadow:0 0 20px rgba(255,255,255,0.3);
 }
 
-/* 💖 FADE SLIDER */
 .slides{
-    position:relative;
     width:100%;
-    height:300px;
+    height:100%;
+    position:relative;
 }
 
-/* each image stacks on top of each other */
 .slides img{
     position:absolute;
-    top:0;
-    left:0;
+    inset:0;
     width:100%;
-    height:300px;
+    height:100%;
     object-fit:cover;
     border-radius:18px;
     opacity:0;
     animation:fade 12s infinite;
 }
 
-/* delay each image */
 .slides img:nth-child(1){
     animation-delay:0s;
 }
@@ -205,13 +203,22 @@ body{
     animation-delay:8s;
 }
 
-/* fade animation */
 @keyframes fade{
-    0% { opacity:0; transform:scale(1.05); }
-    10% { opacity:1; }
-    30% { opacity:1; }
-    40% { opacity:0; }
-    100% { opacity:0; transform:scale(1.05); }
+    0%,100%{
+        opacity:0;
+    }
+
+    8%{
+        opacity:1;
+    }
+
+    28%{
+        opacity:1;
+    }
+
+    36%{
+        opacity:0;
+    }
 }
 
 .big-heart{
