@@ -196,6 +196,7 @@ body{
         inset 0 0 80px rgba(255,200,200,0.15);
 
     transform:rotate(-0.3deg);
+    translateY(30px) scale(0.95);
     transition:1s ease;
 }
 
@@ -203,7 +204,8 @@ body{
 .card.show{
     opacity:1;
     visibility:visible;
-    transform:rotate(0deg) scale(1);
+    transform: rotate(0deg) translateY(0px) scale(1);
+    transition: all 1.2s ease;
 }
 .card::before{
     content:"";
