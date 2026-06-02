@@ -61,8 +61,16 @@ body{
     }
 }
 .message{
-    line-height:1.9;
-    margin-bottom:15px;
+    line-height:2;
+    font-size:1.08rem;
+    text-align:left;
+
+    /* 🖋️ ink-like color */
+    color:#3a2a2a;
+
+    font-family: "Georgia", serif;
+
+    letter-spacing:0.2px;
 }
 /* 💖 Click Hearts */
 .heart-pop{
@@ -205,6 +213,10 @@ body{
     mix-blend-mode:multiply;
     pointer-events:none;
 }
+.card:hover{
+    transform:rotate(0deg) scale(1.01);
+    transition:0.5s ease;
+}
 
 .big-heart{
     font-size:65px;
@@ -290,9 +302,11 @@ body{
     }
 }
 h1{
-    margin-top:10px;
-    margin-bottom:15px;
-    font-size:2.2rem;
+    font-family:'Great Vibes', cursive;
+    font-size:2.4rem;
+    color:#8b2f4a;
+
+    text-shadow:0 2px 10px rgba(0,0,0,0.15);
 }
 
 .line{
