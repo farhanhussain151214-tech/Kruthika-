@@ -179,6 +179,7 @@ body{
 .card{
     display:none;
     position:relative;
+    z-index:1;
     max-width:750px;
     margin:auto;
     padding:40px;
@@ -206,12 +207,18 @@ body{
     inset:0;
     border-radius:20px;
 
-    /* 📜 subtle paper grain effect */
     background-image:url("https://www.transparenttextures.com/patterns/paper-fibers.png");
 
-    opacity:0.25;
+    opacity:0.18;
     mix-blend-mode:multiply;
+
     pointer-events:none;
+
+    z-index:0;   /* IMPORTANT */
+}
+.card > *{
+    position:relative;
+    z-index:2;
 }
 .card:hover{
     transform:rotate(0deg) scale(1.01);
