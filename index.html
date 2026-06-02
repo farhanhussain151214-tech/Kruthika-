@@ -91,7 +91,16 @@ body{
         opacity:0;
     }
 }
-
+.surprise-btn {
+    margin-top: 20px;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(135deg, #ff7eb3, #ff758c);
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+}
 /* Sparkles */
 .sparkle{
     position:fixed;
@@ -603,6 +612,21 @@ your the most precious phase of my life and on this day it doesn't even feel lik
 
 no matter what life throws at us I promise to stand by you ❤️
 </p>
+
+<button class="surprise-btn" id="surpriseBtn">
+    🎁 Click for Surprise
+</button>
+<div class="surprise-box" id="surpriseBox">
+    <h3>💖 Secret Message</h3>
+
+    <ul>
+        <li>You are my safe place</li>
+        <li>I feel peace when I talk to you</li>
+        <li>You make my life meaningful</li>
+        <li>I choose you every single day</li>
+    </ul>
+</div>
+
     <div class="signature">
     Forever Yours ❤️
     <br>
@@ -690,6 +714,11 @@ document.addEventListener("click", function(e){
 
 });
 </script>
+const btn = document.getElementById("surpriseBtn");
+const box = document.getElementById("surpriseBox");
 
+btn.addEventListener("click", () => {
+    box.classList.toggle("show");
+});
 </body>
 </html>
