@@ -524,12 +524,15 @@ h1{
 const envelope = document.getElementById("envelope");
 const card = document.getElementById("card");
 const intro = document.getElementById("intro");
-const music = document.getElementById("bgMusic");
 
 envelope.addEventListener("click", () => {
 
     // 🎵 Start music immediately
+    const music = document.getElementById("bgMusic");
+
+if (music) {
     music.play().catch(() => {});
+}
 
     envelope.classList.add("open");
 
@@ -549,6 +552,11 @@ envelope.addEventListener("click", () => {
 });
 
 </script>
+
+<audio id="bgMusic" loop>
+    <source src="loversR.mp3" type="audio/mp3">
+</audio>
+
 <script>
 document.addEventListener("click", function(e){
 
@@ -572,10 +580,6 @@ document.addEventListener("click", function(e){
 
 });
 </script>
-
-<audio id="bgMusic" loop>
-    <source src="loversR.mp3" type="audio/mp3">
-</audio>
 
 </body>
 </html>
