@@ -553,9 +553,25 @@ if (music) {
 
 </script>
 
-<audio id="bgMusic" loop>
+<audio id="bgMusic">
     <source src="loversR.mp3" type="audio/mp3">
 </audio>
+
+<script>
+const bgMusic = document.getElementById("bgMusic");
+
+bgMusic.addEventListener("timeupdate", () => {
+
+    const timeLeft = bgMusic.duration - bgMusic.currentTime;
+
+    if (timeLeft <= 5) {
+
+        bgMusic.volume = timeLeft / 5;
+
+    }
+
+});
+</script>
 
 <script>
 document.addEventListener("click", function(e){
