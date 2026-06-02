@@ -518,27 +518,26 @@ h1{
 
 </div>
 
-<script>
+
+   <script>
 
 const envelope = document.getElementById("envelope");
 const card = document.getElementById("card");
 const intro = document.getElementById("intro");
-
 const music = document.getElementById("bgMusic");
 
 envelope.addEventListener("click", () => {
+
+    // 🎵 Start music immediately
+    music.play().catch(() => {});
 
     envelope.classList.add("open");
 
     setTimeout(() => {
 
         intro.style.display = "none";
-        card.classList.add("show");
 
-        // 💖 MUSIC STARTS HERE (exact moment card appears)
-        music.play().catch(() => {
-            console.log("Autoplay blocked");
-        });
+        card.classList.add("show");
 
         card.scrollIntoView({
             behavior: "smooth",
@@ -548,6 +547,8 @@ envelope.addEventListener("click", () => {
     }, 900);
 
 });
+
+</script>
 </script>
 <script>
 document.addEventListener("click", function(e){
