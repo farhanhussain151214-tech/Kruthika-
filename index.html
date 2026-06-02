@@ -176,8 +176,10 @@ body{
 
 /* Letter Card */
 
+/* 💖 Letter Card (hidden by default) */
 .card{
-    display:none;
+    opacity:0;
+    visibility:hidden;
     position:relative;
     z-index:1;
     max-width:750px;
@@ -185,10 +187,7 @@ body{
     padding:40px;
     border-radius:20px;
 
-    /* 📜 real paper feel */
-    background:
-        linear-gradient(135deg, #fffaf0, #fff3e6);
-
+    background:linear-gradient(135deg, #fffaf0, #fff3e6);
     color:#3b2f2f;
     text-align:center;
 
@@ -196,10 +195,15 @@ body{
         0 20px 60px rgba(0,0,0,0.25),
         inset 0 0 80px rgba(255,200,200,0.15);
 
-    animation:fadeIn 1.2s ease;
-
-    /* slight paper tilt realism */
     transform:rotate(-0.3deg);
+    transition:1s ease;
+}
+
+/* 💖 Show card smoothly */
+.card.show{
+    opacity:1;
+    visibility:visible;
+    transform:rotate(0deg) scale(1);
 }
 .card::before{
     content:"";
