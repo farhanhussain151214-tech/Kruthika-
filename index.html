@@ -182,7 +182,26 @@ body{
     text-shadow:0 0 10px rgba(255,255,255,0.7);
     width:100%;
 }
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    pointer-events: none;
+    animation: confettiFall 2s ease-out forwards;
+    z-index: 9999;
+}
 
+@keyframes confettiFall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(250px) rotate(720deg);
+        opacity: 0;
+    }
+}
 /* Letter Card */
 
 /* 💖 Letter Card (hidden by default) */
@@ -626,7 +645,7 @@ no matter what life throws at us I promise to stand by you ❤️
 </p>
 
 <button class="surprise-btn" id="surpriseBtn">
-    🎁 Click for Surprise
+    💖 One More Thing...
 </button>
 <div class="surprise-box" id="surpriseBox">
     <h3>💖 Secret Message</h3>
@@ -725,14 +744,46 @@ document.addEventListener("click", function(e){
     }, 1000);
 
 });
-</script>
-
 <script>
 const btn = document.getElementById("surpriseBtn");
 const box = document.getElementById("surpriseBox");
 
 btn.addEventListener("click", () => {
+
     box.classList.toggle("show");
+
+    const colors = [
+        "#ff758c",
+        "#ff7eb3",
+        "#ffd166",
+        "#ffffff",
+        "#ff4d6d"
+    ];
+
+    for(let i = 0; i < 60; i++) {
+
+        const confetti = document.createElement("div");
+        confetti.classList.add("confetti");
+
+        confetti.style.background =
+            colors[Math.floor(Math.random() * colors.length)];
+
+        confetti.style.left =
+            (window.innerWidth / 2 + (Math.random() * 300 - 150)) + "px";
+
+        confetti.style.top =
+            (window.innerHeight / 2) + "px";
+
+        confetti.style.transform =
+            `rotate(${Math.random() * 360}deg)`;
+
+        document.body.appendChild(confetti);
+
+        setTimeout(() => {
+            confetti.remove();
+        }, 2000);
+    }
+
 });
 </script>
 </body>
