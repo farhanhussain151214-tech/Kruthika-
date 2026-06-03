@@ -400,6 +400,47 @@ body{
 .slides2 img:nth-child(3){
     animation-delay:8s;
 }
+.butterfly {
+    position: absolute;
+    font-size: 24px;
+    pointer-events: none;
+    opacity: 0.8;
+    animation: butterflyFly linear infinite;
+}
+
+@keyframes butterflyFly {
+
+    0% {
+        transform:
+            translate(0, 0)
+            rotate(0deg);
+    }
+
+    25% {
+        transform:
+            translate(40px, -60px)
+            rotate(15deg);
+    }
+
+    50% {
+        transform:
+            translate(-30px, -120px)
+            rotate(-15deg);
+    }
+
+    75% {
+        transform:
+            translate(50px, -180px)
+            rotate(10deg);
+    }
+
+    100% {
+        transform:
+            translate(0, -250px)
+            rotate(0deg);
+        opacity: 0;
+    }
+}
 
 /* 🌸 fade animation */
 h1{
@@ -851,6 +892,43 @@ confetti.style.setProperty(
     }
 
 });
+</script>
+
+<script>
+const card = document.getElementById("card");
+
+function createButterfly() {
+
+    const butterfly = document.createElement("div");
+
+    butterfly.classList.add("butterfly");
+
+    const butterflies = [
+        "🦋",
+        "🦋",
+        "💖"
+    ];
+
+    butterfly.innerHTML =
+        butterflies[Math.floor(Math.random() * butterflies.length)];
+
+    butterfly.style.left =
+        Math.random() * card.offsetWidth + "px";
+
+    butterfly.style.top =
+        card.offsetHeight + "px";
+
+    butterfly.style.animationDuration =
+        (6 + Math.random() * 4) + "s";
+
+    card.appendChild(butterfly);
+
+    setTimeout(() => {
+        butterfly.remove();
+    }, 10000);
+}
+
+setInterval(createButterfly, 1200);
 </script>
 </body>
 </html>
